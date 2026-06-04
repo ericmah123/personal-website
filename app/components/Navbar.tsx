@@ -59,24 +59,7 @@ export default function Navbar() {
           ))}
         </div>
 
-        {/* Dots — right */}
-        <div className={`nav-icon${open ? " nav-icon-open" : ""}`} aria-hidden="true">
-          <DotsSixIcon />
-        </div>
       </nav>
     </div>
-  )
-}
-
-function DotsSixIcon() {
-  return (
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="currentColor">
-      <circle cx="1.5" cy="1.5" r="1.5" />
-      <circle cx="9" cy="1.5" r="1.5" />
-      <circle cx="16.5" cy="1.5" r="1.5" />
-      <circle cx="1.5" cy="10.5" r="1.5" />
-      <circle cx="9" cy="10.5" r="1.5" />
-      <circle cx="16.5" cy="10.5" r="1.5" />
-    </svg>
   )
 }

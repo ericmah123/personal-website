@@ -202,7 +202,7 @@ canvas.embers {
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  gap: 14px;
+  gap: 0;
   padding: 10px 18px;
   border-radius: 999px;
   cursor: pointer;
@@ -220,18 +220,21 @@ canvas.embers {
   flex-direction: row;
   align-items: center;
   gap: 0;
+  margin-left: 0;
   max-width: 0;
   overflow: hidden;
   white-space: nowrap;
   pointer-events: none;
   transition:
     max-width 0.91s cubic-bezier(0.16, 1, 0.3, 1),
-    gap 0.78s cubic-bezier(0.16, 1, 0.3, 1);
+    gap 0.78s cubic-bezier(0.16, 1, 0.3, 1),
+    margin-left 0.78s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-items.nav-items-open {
   max-width: 420px;
   gap: 4px;
+  margin-left: 14px;
   pointer-events: auto;
 }
 
