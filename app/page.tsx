@@ -1,4 +1,7 @@
 import HomeEffects from "./components/HomeEffects";
+import Timeline from "./components/Timeline";
+import Projects from "./components/Projects";
+import Currently from "./components/Currently";
 
 export default function Home() {
   return (
@@ -42,33 +45,6 @@ export default function Home() {
           </div>
         </header>
 
-        {/* Currently */}
-        <section id="currently" className="page-section">
-          <div className="section-label reveal">Currently</div>
-          <div className="currently-list">
-            <div className="c-row reveal d-40">
-              <span className="c-num">01</span>
-              <span className="c-key">Training</span>
-              <span className="c-val">BJJ, Wrestling, Muay Thai</span>
-            </div>
-            <div className="c-row reveal d-110">
-              <span className="c-num">02</span>
-              <span className="c-key">Cooking</span>
-              <span className="c-val">Trying not to cook my steak well-done</span>
-            </div>
-            <div className="c-row reveal d-180">
-              <span className="c-num">03</span>
-              <span className="c-key">Watching</span>
-              <span className="c-val">Bloodhounds, Modern Family</span>
-            </div>
-            <div className="c-row reveal d-250">
-              <span className="c-num">04</span>
-              <span className="c-key">Building</span>
-              <span className="c-val">This site + exploring Claude workflows</span>
-            </div>
-          </div>
-        </section>
-
         {/* Intro */}
         <section id="about" className="page-section">
           <div className="section-label reveal">Intro</div>
@@ -81,6 +57,10 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        <Timeline />
+        <Projects />
+        <Currently />
       </div>
 
       <HomeEffects />
