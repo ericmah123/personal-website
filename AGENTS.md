@@ -43,6 +43,7 @@ Next.js 14 App Router, Tailwind, TypeScript. Deployed on Vercel.
 - No animations unless explicitly asked
 - Use existing components before creating new ones
 - Always use TypeScript, never plain .js files
+- The design that I import, I don't want you to completely overhaul.
 
 ## Do Not
 - Use Bootstrap or any CSS framework other than Tailwind
