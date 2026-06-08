@@ -2,19 +2,28 @@
 
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import NavCharacter from "./NavCharacter"
 
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/work", label: "Work" },
-  { href: "/notes", label: "Notes" },
-  { href: "/about", label: "About" },
+type NavLink = {
+  label: string
+  href: string
+  /** null = scroll to top, string = element id to scroll to, undefined = real route */
+  scrollId?: string | null
+}
+
+const links: NavLink[] = [
+  { label: "Home",          href: "/",       scrollId: null },
+  { label: "Experience",    href: "/#experience", scrollId: "experience" },
+  { label: "Projects",      href: "/#projects",   scrollId: "projects" },
+  { label: "Eric's Corner", href: "/notes" },
 ]
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
     function onPointerDown(e: PointerEvent) {
@@ -33,6 +42,22 @@ export default function Navbar() {
     }
   }, [])
 
+  function handleClick(e: React.MouseEvent, link: NavLink) {
+    e.stopPropagation()
+    setOpen(false)
+
+    // Only intercept scroll-target links when already on the home page
+    if (pathname === "/" && "scrollId" in link) {
+      e.preventDefault()
+      if (link.scrollId === null) {
+        window.scrollTo({ top: 0, behavior: "smooth" })
+      } else {
+        document.getElementById(link.scrollId!)?.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+    // Otherwise let <Link> handle the navigation normally
+  }
+
   return (
     <div className="sticky top-5 z-20 pt-5 flex justify-center">
       <nav
@@ -47,14 +72,14 @@ export default function Navbar() {
 
         {/* Links — expand between face and dots */}
         <div className={`nav-items${open ? " nav-items-open" : ""}`} aria-hidden={!open}>
-          {links.map(({ href, label }, i) => (
+          {links.map((link, i) => (
             <Link
-              key={href}
-              href={href}
+              key={link.href}
+              href={link.href}
               className={`nav-item nav-item-d${i}`}
-              onClick={e => { e.stopPropagation(); setOpen(false) }}
+              onClick={(e) => handleClick(e, link)}
             >
-              {label}
+              {link.label}
             </Link>
           ))}
         </div>

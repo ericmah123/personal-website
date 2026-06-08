@@ -56,17 +56,10 @@ export default function HomeEffects() {
       if (!layer || !hero) return;
       const rect = hero.getBoundingClientRect();
       const top = rect.top + window.scrollY;
-      const docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
-      const layerH = Math.max(docH - top, rect.height);
       layer.style.top = top + "px";
       layer.style.left = (rect.left + window.scrollX) + "px";
       layer.style.width = rect.width + "px";
-      layer.style.height = layerH + "px";
-      const fy = Math.max(2, (rect.height / layerH) * 100);
-      const pr = document.getElementById("rl-primary");
-      const th = document.getElementById("rl-thin");
-      if (pr) pr.setAttribute("points", `66,-8 66,${(fy * 0.30).toFixed(2)} 53,${(fy * 0.58).toFixed(2)} 46,${fy.toFixed(2)} 46,102`);
-      if (th) th.setAttribute("points", `60,-8 60,${(fy * 0.30).toFixed(2)} 47,${(fy * 0.58).toFixed(2)} 40,${fy.toFixed(2)} 40,102`);
+      layer.style.height = rect.height + "px";
     }
     layoutRedline();
     window.addEventListener("resize", layoutRedline, { passive: true });
