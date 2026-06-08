@@ -16,7 +16,7 @@ const links: NavLink[] = [
   { label: "Home",          href: "/",       scrollId: null },
   { label: "Experience",    href: "/#experience", scrollId: "experience" },
   { label: "Projects",      href: "/#projects",   scrollId: "projects" },
-  { label: "Eric's Corner", href: "/notes" },
+  { label: "Eric's Corner", href: "/ericscorner" },
 ]
 
 export default function Navbar() {
