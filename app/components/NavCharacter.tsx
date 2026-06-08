@@ -1,7 +1,18 @@
+"use client"
+import { useState } from "react"
+
 // SVG paths extracted verbatim from the Framer Character pack (Boy 2 / Y6gTRixSV variant)
 export default function NavCharacter() {
+  const [wink, setWink] = useState(false)
+
   return (
-    <span className="nav-character" aria-hidden="true">
+    <span
+      className={`nav-character${wink ? " is-winking" : ""}`}
+      aria-hidden="true"
+      onPointerEnter={() => setWink(true)}
+      onPointerLeave={() => setWink(false)}
+      onPointerDown={() => setWink(false)}
+    >
       <svg
         viewBox="0 0 178.978 181.103"
         width="28"
@@ -99,5 +110,5 @@ export default function NavCharacter() {
         />
       </svg>
     </span>
-  );
+  )
 }
