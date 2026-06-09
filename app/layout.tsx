@@ -22,8 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased`}>
       <body className="bg-background text-foreground flex flex-col min-h-full font-sans relative overflow-x-hidden">
+        <a href="#main-content" className="skip-link">Skip to content</a>
         <Navbar />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" tabIndex={-1} className="flex-1">{children}</main>
         <Footer />
       </body>
     </html>

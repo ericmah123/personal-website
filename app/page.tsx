@@ -53,13 +53,13 @@ export default function Home() {
                 <span>CNRL</span>
               </span>
             </p>
+         
           </div>
         </header>
 
         {/* Intro */}
         <section id="about" className="page-section">
-          <div className="section-label reveal">Intro</div>
-          <div className="intro-panel glass reveal d-80">
+          <div className="intro-panel glass reveal">
 <p>
   I spent my degree learning to build things and my co-ops learning that{" "}
   <span className="em">the hard part is never the code.</span> Currently

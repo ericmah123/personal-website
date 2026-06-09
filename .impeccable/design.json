@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-09T00:00:00.000Z",
+  "title": "Design System: Eric Mah — Personal Site",
+  "extensions": {
+    "colorMeta": {
+      "void-black": {
+        "role": "neutral",
+        "displayName": "Void Black",
+        "canonical": "oklch(5.8% 0 0)",
+        "tonalRamp": [
+          "oklch(3% 0 0)",
+          "oklch(5.8% 0 0)",
+          "oklch(9% 0 0)",
+          "oklch(14% 0 0)",
+          "oklch(22% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(50% 0 0)",
+          "oklch(68% 0 0)"
+        ]
+      },
+      "bone-white": {
+        "role": "neutral",
+        "displayName": "Bone White",
+        "canonical": "oklch(96.1% 0 0)",
+        "tonalRamp": [
+          "oklch(20% 0 0)",
+          "oklch(38% 0 0)",
+          "oklch(54% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(88% 0 0)",
+          "oklch(93% 0 0)",
+          "oklch(96.1% 0 0)"
+        ]
+      },
+      "ash-grey": {
+        "role": "neutral",
+        "displayName": "Ash Grey",
+        "canonical": "oklch(68% 0 0)",
+        "tonalRamp": [
+          "oklch(18% 0 0)",
+          "oklch(28% 0 0)",
+          "oklch(40% 0 0)",
+          "oklch(52% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(78% 0 0)",
+          "oklch(87% 0 0)",
+          "oklch(94% 0 0)"
+        ]
+      },
+      "ember-red": {
+        "role": "primary",
+        "displayName": "Ember Red",
+        "canonical": "oklch(52% 0.20 25)",
+        "tonalRamp": [
+          "oklch(18% 0.14 25)",
+          "oklch(26% 0.17 25)",
+          "oklch(34% 0.19 25)",
+          "oklch(43% 0.20 25)",
+          "oklch(52% 0.20 25)",
+          "oklch(63% 0.17 25)",
+          "oklch(74% 0.14 25)",
+          "oklch(85% 0.08 25)"
+        ]
+      },
+      "hearth-amber": {
+        "role": "secondary",
+        "displayName": "Hearth Amber",
+        "canonical": "oklch(73% 0.14 70)",
+        "tonalRamp": [
+          "oklch(22% 0.09 70)",
+          "oklch(33% 0.11 70)",
+          "oklch(44% 0.13 70)",
+          "oklch(55% 0.14 70)",
+          "oklch(65% 0.14 70)",
+          "oklch(73% 0.14 70)",
+          "oklch(82% 0.11 70)",
+          "oklch(91% 0.07 70)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero name only. Compressed, massive, intentionally oversized at large viewports."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Post page titles. Not used on the homepage."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Project card names, section subheadings."
+      },
+      "body": {
+        "displayName": "Body Large",
+        "purpose": "Intro panel prose. Maximum 46ch wide."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Section labels exclusively. One per section, never in card bodies."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glass-ambient",
+        "value": "inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.02), inset 0 -14px 30px rgba(0,0,0,0.22), 0 18px 40px rgba(0,0,0,0.45)",
+        "purpose": "Applied to all .glass surfaces. Part of the material, not a structural drop-shadow."
+      },
+      {
+        "name": "card-hover-glow",
+        "value": "0 0 18px rgba(226,56,56,0.18)",
+        "purpose": "Atmospheric red bleed on interactive glass elements at hover state."
+      },
+      {
+        "name": "timeline-spine",
+        "value": "0 0 8px rgba(226,56,56,0.45)",
+        "purpose": "The 2px red vertical line behind timeline nodes. Low-diffusion focus point."
+      },
+      {
+        "name": "amber-dot-glow",
+        "value": "0 0 10px #e8a045, 0 0 22px rgba(232,160,69,0.45)",
+        "purpose": "Amber sonar pulse on the ongoing timeline dot only. Paired with the sonar-ping keyframe animation."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-snap",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The system's universal easing curve. Used for all transitions and entrance animations."
+      },
+      {
+        "name": "reveal-up",
+        "value": "opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Scroll-triggered section reveal. Starts at opacity 0, translateY(28px). Applied by IntersectionObserver at threshold 0.18."
+      },
+      {
+        "name": "hero-entrance",
+        "value": "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Page-load entrance for hero elements. Starts at translateY(32px). rAF-triggered, not scroll-triggered."
+      },
+      {
+        "name": "glass-hover",
+        "value": "background 0.4s ease, box-shadow 0.4s ease, border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Glass card state transition on hover: border gains red tint, card lifts 2px."
+      },
+      {
+        "name": "stagger-d40",
+        "value": "transition-delay: 40ms",
+        "purpose": "Stagger delay class .d-40 — first item in a staggered entrance sequence."
+      },
+      {
+        "name": "stagger-d80",
+        "value": "transition-delay: 80ms",
+        "purpose": "Stagger delay class .d-80"
+      },
+      {
+        "name": "stagger-d180",
+        "value": "transition-delay: 180ms",
+        "purpose": "Stagger delay class .d-180"
+      },
+      {
+        "name": "stagger-d520",
+        "value": "transition-delay: 520ms",
+        "purpose": "Stagger delay class .d-520 — for the redline SVG motif, which appears last."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "980px",
+        "purpose": "Navigation redline disappears, bottom project grid collapses from 3 to 2 columns."
+      },
+      {
+        "name": "mobile",
+        "value": "640px",
+        "purpose": "Shell padding drops to 22px, all grids collapse to single column, timeline switches to list layout."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Glass Card",
+      "kind": "card",
+      "refersTo": "glass-card",
+      "description": "Primary container. A surface with material properties — blur and saturation create depth; the tint is nearly invisible.",
+      "html": "<div class=\"ds-glass-card\"><p class=\"ds-glass-card-text\">Component content</p></div>",
+      "css": ".ds-glass-card { position: relative; background: rgba(255,255,255,0.045); backdrop-filter: blur(22px) saturate(165%); -webkit-backdrop-filter: blur(22px) saturate(165%); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.02), inset 0 -14px 30px rgba(0,0,0,0.22), 0 18px 40px rgba(0,0,0,0.45); border-radius: 18px; padding: 22px 24px; overflow: hidden; isolation: isolate; transition: background 0.4s ease, box-shadow 0.4s ease, border-color 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); } .ds-glass-card:hover { border-color: rgba(226,56,56,0.45); transform: translateY(-2px); } .ds-glass-card-text { font-family: sans-serif; font-size: 14px; color: #a3a3a3; margin: 0; line-height: 1.6; }"
+    },
+    {
+      "name": "Navigation Pill",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Glass pill that expands to show nav links. Closed state shown here.",
+      "html": "<div class=\"ds-nav-pill\"><div class=\"ds-nav-icon\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"5\" cy=\"12\" r=\"1.5\" fill=\"#e23838\"/><circle cx=\"12\" cy=\"12\" r=\"1.5\" fill=\"#e23838\"/><circle cx=\"19\" cy=\"12\" r=\"1.5\" fill=\"#e23838\"/></svg></div></div>",
+      "css": ".ds-nav-pill { display: inline-flex; align-items: center; gap: 0; padding: 10px 18px; border-radius: 999px; cursor: pointer; background: rgba(255,255,255,0.045); backdrop-filter: blur(22px) saturate(165%); -webkit-backdrop-filter: blur(22px) saturate(165%); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 18px 40px rgba(0,0,0,0.45); transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); } .ds-nav-pill:hover { transform: scale(1.04); } .ds-nav-icon { display: flex; align-items: center; justify-content: center; }"
+    },
+    {
+      "name": "Section Label",
+      "kind": "custom",
+      "refersTo": "section-label",
+      "description": "The system's section-heading motif. The only place label typography and Ember Red combine as a design element.",
+      "html": "<div class=\"ds-section-label\"><span class=\"ds-section-label-bar\"></span>Section Title</div>",
+      "css": ".ds-section-label { display: inline-flex; align-items: center; gap: 12px; font-family: sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #e23838; margin-bottom: 28px; } .ds-section-label-bar { width: 26px; height: 2px; background: #e23838; transform: skewX(-24deg); box-shadow: 0 0 6px rgba(226,56,56,0.6); flex-shrink: 0; display: block; }"
+    },
+    {
+      "name": "Filter Pill — Active",
+      "kind": "chip",
+      "refersTo": "filter-pill-active",
+      "description": "Active state of Eric's Corner category filter. Filled with Ember Red.",
+      "html": "<button class=\"ds-filter-pill-active\">Technology</button>",
+      "css": ".ds-filter-pill-active { padding: 7px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; font-family: sans-serif; cursor: pointer; background: rgb(226,56,56); color: #fff; border: 1px solid rgb(226,56,56); transition: opacity 0.18s ease; } .ds-filter-pill-active:hover { opacity: 0.88; }"
+    },
+    {
+      "name": "Filter Pill — Inactive",
+      "kind": "chip",
+      "refersTo": "filter-pill-inactive",
+      "description": "Inactive state of Eric's Corner category filter. Ghost bordered pill.",
+      "html": "<button class=\"ds-filter-pill-inactive\">Training</button>",
+      "css": ".ds-filter-pill-inactive { padding: 7px 18px; border-radius: 999px; font-size: 13px; font-weight: 500; font-family: sans-serif; cursor: pointer; background: transparent; color: #a3a3a3; border: 1px solid rgba(255,255,255,0.10); transition: color 0.18s ease, border-color 0.18s ease; } .ds-filter-pill-inactive:hover { border-color: rgba(226,56,56,0.55); color: #f5f5f5; }"
+    },
+    {
+      "name": "Inline Brand Chip",
+      "kind": "chip",
+      "refersTo": "inline-chip",
+      "description": "Glass pill for inline brand references in prose (employer, company). Sits mid-line via translateY.",
+      "html": "<span class=\"ds-inline-chip\"><span class=\"ds-chip-logo\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#0f0f0f\" stroke-width=\"2\" stroke-linecap=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/></svg></span>Company</span>",
+      "css": ".ds-inline-chip { display: inline-flex; align-items: center; gap: 8px; transform: translateY(-2px); padding: 4px 13px 4px 9px; border-radius: 999px; background: rgba(255,255,255,0.07); backdrop-filter: blur(14px) saturate(160%); -webkit-backdrop-filter: blur(14px) saturate(160%); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 14px rgba(0,0,0,0.3); color: #f5f5f5; font-family: sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; line-height: 1; transition: border-color 0.2s ease, box-shadow 0.2s ease; } .ds-inline-chip:hover { border-color: rgba(226,56,56,0.50); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 4px 18px rgba(226,56,56,0.20); } .ds-chip-logo { width: 27px; height: 18px; border-radius: 5px; background: #fff; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }"
+    },
+    {
+      "name": "Flip Card — Front",
+      "kind": "card",
+      "refersTo": null,
+      "description": "Timeline entry card front face. Shows company logo, role, and date. Hover triggers a 3D CSS flip to reveal description.",
+      "html": "<div class=\"ds-flip-wrap\"><div class=\"ds-flip-card-front\"><div class=\"ds-flip-card-logo\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"#0f0f0f\" stroke-width=\"1.5\"><rect x=\"2\" y=\"7\" width=\"20\" height=\"14\" rx=\"2\"/><path d=\"M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2\"/></svg></div><div class=\"ds-flip-card-info\"><span class=\"ds-flip-card-company\">Company</span><span class=\"ds-flip-card-role\">Role Title</span><span class=\"ds-flip-card-date\">Jan 2024 — Present</span></div></div></div>",
+      "css": ".ds-flip-wrap { width: 280px; height: 200px; border-radius: 18px; } .ds-flip-card-front { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 16px 20px; text-align: center; background: rgba(255,255,255,0.045); backdrop-filter: blur(22px) saturate(165%); border: 1px solid rgba(255,255,255,0.10); box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 18px 40px rgba(0,0,0,0.45); border-radius: 18px; box-sizing: border-box; } .ds-flip-card-logo { width: 44px; height: 44px; border-radius: 8px; background: #fff; padding: 5px; display: flex; align-items: center; justify-content: center; margin-bottom: 4px; } .ds-flip-card-info { display: flex; flex-direction: column; align-items: center; gap: 3px; } .ds-flip-card-company { font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #a3a3a3; font-family: sans-serif; } .ds-flip-card-role { font-size: 13px; font-weight: 600; color: #f5f5f5; letter-spacing: -0.01em; font-family: sans-serif; } .ds-flip-card-date { font-size: 11px; color: #a3a3a3; letter-spacing: 0.04em; font-family: sans-serif; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Dead Serious, Still Alive",
+    "overview": "The site's terse structure is the dead serious part — the sparse hero, the dry one-liner, the timeline that states facts without commentary. The \"still alive\" is in the margins: ember particles that drift across the dark field, a navigation character that winks, an intro panel that admits \"I also try to touch grass, but still working on it.\" The system never explains itself; it just lets those moments exist.\n\nDepth is material, not metaphorical. Glass surfaces refract the drifting gradient field beneath them. A red hairline cuts through the hero at an angle, glowing faintly like heated metal. The embers are not decorative — they are the most literal expression of the system's warmth, given physical form. Components are liquid glass shells: the material itself is the surface. Animations are purposeful and tasteful; they respond to interaction without performing for attention.\n\nThe system rejects the template. No skills section. No hero metrics. No grid of rounded-icon features. One name, one honest sentence, and a set of carefully earned details that reward slower reading.",
+    "keyCharacteristics": [
+      "Near-void dark field with three drifting gradient blobs shifting the ambient light",
+      "Liquid glass surfaces that blur (22px) and saturate (165%) the layer below",
+      "Ember Red (#e23838) as the sole primary accent — labels, highlights, active states, structural motifs",
+      "Hearth Amber (#e8a045) restricted to ambient warmth only: ember particles and ongoing-state indicators",
+      "Inter throughout — contrast through weight variation (300 to 600), not family contrast",
+      "Entrance animations: upward float on hero load, scroll-reveal on subsequent sections; never choreographed",
+      "Every animation respects prefers-reduced-motion: reduce"
+    ],
+    "rules": [
+      {
+        "name": "The One Accent Rule",
+        "body": "Ember Red appears on 15% or less of any given screen's visual area. Its rarity is what makes the redline motif, section labels, and active states register. Overuse cancels the system.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Fence Rule",
+        "body": "Hearth Amber is ambient warmth only: ember particles and the ongoing-state sonar ping. It never appears as text, as a button background, or as a label. The moment amber becomes functional it loses its warmth.",
+        "section": "colors"
+      },
+      {
+        "name": "The Glass Tint Rule",
+        "body": "Glass surface transparency (rgba(255,255,255,0.045)) is intentionally near-invisible. The glass is the blur and saturation, not the white tint. Increasing the tint above 0.07 turns glass into a frosted block.",
+        "section": "colors"
+      },
+      {
+        "name": "The Weight-Contrast Rule",
+        "body": "Hierarchy comes from weight, not size alone. Weight 600 paired with weight 300 creates more contrast than mismatched families at smaller differences. Do not introduce a second typeface to solve a hierarchy problem weight can fix.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Uppercase Rule",
+        "body": "The .section-label motif is the single place uppercase runs as a design element. One per section maximum. Cards, tooltips, and descriptions are never uppercase.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glass-Not-Shadow Rule",
+        "body": "When a new elevated surface needs depth, blur first — shadow second. A drop-shadow without a corresponding glass surface is an orphaned cue. The blur IS the elevation.",
+        "section": "elevation"
+      },
+      {
+        "name": "The State-Response Rule",
+        "body": "Surfaces are visually flat at rest. Shadows, glows, and border highlights appear only in response to state (hover, active, ongoing). A resting card and a hovered card are materially distinct.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do use the .glass class for all elevated surfaces. The class carries backdrop-filter, border, inset shadows, and the top-edge highlight as a calibrated unit.",
+      "Do use cubic-bezier(0.16, 1, 0.3, 1) for all transitions and animations. This is the system's single easing curve.",
+      "Do use clamp() for all display, headline, title, and body-large text sizes. Fixed pixel values are prohibited for fluid-scale roles.",
+      "Do honor prefers-reduced-motion: reduce. Every animation must have a reduced-motion override: instant or crossfade.",
+      "Do limit Ember Red to 15% or less of any screen's visual surface.",
+      "Do apply text-wrap: balance to all heading elements and text-wrap: pretty to multi-line body prose.",
+      "Do animate transform and opacity only. backdrop-filter and border-color are permitted exceptions for glass state transitions."
+    ],
+    "donts": [
+      "Don't ship the generic dev portfolio scaffold: avatar hero, skills-progress-bar grid, flat card timeline, three identical project tiles.",
+      "Don't design toward an agency-polished, over-formal aesthetic. The site should feel like Eric built it.",
+      "Don't use gradient text (background-clip: text). Emphasis is through weight or size, not color gradients.",
+      "Don't use Hearth Amber (#e8a045) as a text color, button accent, or functional indicator.",
+      "Don't put the .section-label motif on every card, tooltip, or inline content block. One per section, at the section opening.",
+      "Don't add a skills section, progress bars for abilities, or hero metric statistics.",
+      "Don't recreate glassmorphism inline. The .glass class values are calibrated together.",
+      "Don't introduce a second typeface. The system is Inter-only; weight contrast is the hierarchy.",
+      "Don't animate layout properties (width, height, padding).",
+      "Don't use Hearth Amber on interactive elements to signal urgency or importance — that is Ember Red's role."
+    ]
+  }
+}

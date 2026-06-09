@@ -2,8 +2,13 @@ export default function Footer() {
   return (
     <footer className="relative z-[1] mt-auto pt-14 pb-11">
       <div className="shell footer-inner">
-        <div className="text-[13px] text-muted">
-          © {new Date().getFullYear()} Eric Mah
+        <div className="footer-left">
+          <div className="text-[13px] text-muted">
+            © {new Date().getFullYear()} Eric Mah
+          </div>
+          <a href="mailto:eric.mah25@gmail.com" className="footer-email">
+            eric.mah25@gmail.com
+          </a>
         </div>
         <div className="socials">
           <a
