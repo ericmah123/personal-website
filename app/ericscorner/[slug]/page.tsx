@@ -1,22 +1,9 @@
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { getPostBySlug, getAllPosts } from "@/lib/posts"
+import { getAllPosts } from "@/lib/posts"
+import { CATEGORY_LABELS } from "@/lib/categories"
 import { MDXRemote } from "next-mdx-remote/rsc"
 import PostEffects from "../PostEffects"
-
-const CATEGORY_COLORS: Record<string, string> = {
-  training: "rgb(226,56,56)",
-  kitchen: "#e8a045",
-  tech: "#60a5fa",
-  "watch-play": "#a78bfa",
-}
-
-const CATEGORY_LABELS: Record<string, string> = {
-  training: "Training",
-  kitchen: "Kitchen",
-  tech: "Tech",
-  "watch-play": "Watch & Play",
-}
 
 function formatDate(iso: string): string {
   return new Date(iso + "T00:00:00").toLocaleDateString("en-US", {
@@ -36,7 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
+  const post = getAllPosts().find(p => p.slug === slug)
   if (!post) return {}
   return { title: `${post.title} | Eric Mah`, description: post.excerpt }
 }
@@ -47,8 +34,12 @@ export default async function PostPage({
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const post = getPostBySlug(slug)
-  if (!post) notFound()
+  const allPosts = getAllPosts()
+  const idx = allPosts.findIndex(p => p.slug === slug)
+  if (idx === -1) notFound()
+  const post = allPosts[idx]
+  const prevPost = idx < allPosts.length - 1 ? allPosts[idx + 1] : null
+  const nextPost = idx > 0 ? allPosts[idx - 1] : null
 
   return (
     <>
@@ -62,10 +53,7 @@ export default async function PostPage({
           </div>
 
           <div className="reveal d-80">
-            <span
-              className="corner-cat-pill"
-              style={{ background: CATEGORY_COLORS[post.category] }}
-            >
+            <span className={`corner-cat-pill corner-cat-${post.category}`}>
               {CATEGORY_LABELS[post.category]}
             </span>
             <h1 className="post-title">{post.title}</h1>
@@ -80,6 +68,23 @@ export default async function PostPage({
           <div className="post-body reveal d-180">
             <MDXRemote source={post.content} />
           </div>
+
+          {(prevPost || nextPost) && (
+            <nav className="post-nav reveal" aria-label="Post navigation">
+              {prevPost && (
+                <Link href={`/ericscorner/${prevPost.slug}`} className="post-nav-link post-nav-prev">
+                  <span className="post-nav-dir">← older</span>
+                  <span className="post-nav-title">{prevPost.title}</span>
+                </Link>
+              )}
+              {nextPost && (
+                <Link href={`/ericscorner/${nextPost.slug}`} className="post-nav-link post-nav-next">
+                  <span className="post-nav-dir">newer →</span>
+                  <span className="post-nav-title">{nextPost.title}</span>
+                </Link>
+              )}
+            </nav>
+          )}
         </section>
       </div>
     </>

@@ -24,6 +24,20 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const navRef = useRef<HTMLElement>(null)
   const pathname = usePathname()
+  const introTimers = useRef<ReturnType<typeof setTimeout>[]>([])
+
+  // Briefly show nav links after the hero finishes loading, then collapse —
+  // demonstrates the interaction to first-time visitors.
+  useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return
+    const t1 = setTimeout(() => setOpen(true), 1400)
+    const t2 = setTimeout(() => setOpen(false), 2700)
+    introTimers.current = [t1, t2]
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+    }
+  }, [])
 
   useEffect(() => {
     function onPointerDown(e: PointerEvent) {
@@ -41,6 +55,12 @@ export default function Navbar() {
       window.removeEventListener("scroll", onScroll)
     }
   }, [])
+
+  function handleToggle() {
+    introTimers.current.forEach(clearTimeout)
+    introTimers.current = []
+    setOpen(o => !o)
+  }
 
   function handleClick(e: React.MouseEvent, link: NavLink) {
     e.stopPropagation()
@@ -63,15 +83,29 @@ export default function Navbar() {
       <nav
         ref={navRef}
         className={`nav-pill glass${open ? " nav-open" : ""}${scrolled ? " nav-scrolled" : ""}`}
-        onClick={() => setOpen(o => !o)}
-        aria-expanded={open}
+        onClick={(e) => {
+          if (e.target !== e.currentTarget) return
+          handleToggle()
+        }}
         aria-label="Site navigation"
       >
-        {/* Face — left */}
-        <NavCharacter />
+        {/* Face — left; button gives keyboard users a focusable toggle target */}
+        <button
+          className="nav-toggle"
+          aria-expanded={open}
+          aria-label={open ? "Close navigation" : "Open navigation"}
+          aria-controls="nav-links"
+          onClick={(e) => {
+            e.stopPropagation()
+            handleToggle()
+          }}
+        >
+          <NavCharacter />
+          <span className="nav-pill-hint" aria-hidden="true">menu</span>
+        </button>
 
         {/* Links — expand between face and dots */}
-        <div className={`nav-items${open ? " nav-items-open" : ""}`} aria-hidden={!open}>
+        <div id="nav-links" className={`nav-items${open ? " nav-items-open" : ""}`} aria-hidden={!open}>
           {links.map((link, i) => (
             <Link
               key={link.href}

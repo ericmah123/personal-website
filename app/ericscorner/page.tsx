@@ -13,7 +13,8 @@ export default function EricsCornerPage() {
       <div className="shell">
         <section className="corner-page">
           <div className="reveal">
-            <span className="section-label">Eric&apos;s Corner</span>
+            <h1 className="sr-only">Eric&apos;s Corner</h1>
+            <p className="section-label" aria-hidden="true">Eric&apos;s Corner</p>
             <p className="corner-subtitle">
               Training logs, kitchen experiments, tech notes, and other things.
             </p>
